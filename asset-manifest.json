@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/killer-field-game/static/css/main.e6c13ad2.css",
+    "main.js": "/killer-field-game/static/js/main.6fd9f429.js",
+    "index.html": "/killer-field-game/index.html",
+    "main.e6c13ad2.css.map": "/killer-field-game/static/css/main.e6c13ad2.css.map",
+    "main.6fd9f429.js.map": "/killer-field-game/static/js/main.6fd9f429.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.6fd9f429.js"
+  ]
+}
