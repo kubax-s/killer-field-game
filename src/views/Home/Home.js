@@ -32,19 +32,14 @@ const Home = () => {
 
   const getRandomElement = arr => arr[Math.floor(Math.random() * arr.length)]
 
-  const getTarget = (arr, player) => {
-    const target = getRandomElement(arr)
-
-    if (target !== player) return target
-    if (arr.length >= 2) getTarget(arr, player)
-  }
-
   const getResult = () => {
     let targets = [...players]
     return players.reduce((accumulator, player) => {
-      const target = getTarget(targets, player)
+      let target
+      if (targets.length >= 2) { target = getRandomElement(targets.filter(item => item !== player)) }
+      if (targets.length === 1) { target = getRandomElement(targets) }
       targets = [...targets.filter(item => item !== target)]
-
+      
       return [
         ...accumulator,
         {
