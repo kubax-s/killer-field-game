@@ -33,25 +33,36 @@ const Home = () => {
   const getRandomElement = arr => arr[Math.floor(Math.random() * arr.length)]
 
   const getResult = () => {
-    let targets = [...players]
+    const targets = [...players]
     return players.reduce((accumulator, player) => {
-      let target
-      if (targets.length >= 2) { target = getRandomElement(targets.filter(item => item !== player)) }
-      if (targets.length === 1) { target = targets[0] }
-      targets = [...targets.filter(item => item !== target)]
-
-      return [
-        ...accumulator,
-        {
-          'killer': player,
-          'target': target
-        }
-      ]
+      const valuesToFilter = accumulator.map(item => item.target)
+      const targetsFiltered = targets.filter(item => !valuesToFilter.includes(item))
+      
+      if (targetsFiltered.length >= 2) { 
+        return [
+          ...accumulator,
+          {
+            'killer': player,
+            'target': getRandomElement(targetsFiltered.filter(item => item !== player))
+          }
+        ]
+       }
+      if (targetsFiltered.length === 1) {
+        return [
+          ...accumulator,
+          {
+            'killer': player,
+            'target': targetsFiltered[0]
+          }
+        ] 
+       }
+       return []
     }, [])
   }
 
   const checkResult = () => {
     const arr = getResult()
+    console.log(arr)
     const lastElement = arr[arr.length - 1]
     if (lastElement.killer !== lastElement.target) {
       setResult(arr)
