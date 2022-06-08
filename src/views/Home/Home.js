@@ -14,20 +14,20 @@ const H1 = styled.h1`
 const Home = () => {
 
   const [inputValue, setInputValue] = useState('')
-  const [players, setPlayers] = useState(localStorage.getItem('players') ? JSON.parse(localStorage.getItem('players')) : [])
+  const [players, setPlayers] = useState(localStorage.getItem('KILLER_FIELD_GAME_KILLERS') ? JSON.parse(localStorage.getItem('KILLER_FIELD_GAME_KILLERS')) : [])
   const [result, setResult] = useState(false)
 
   const addPlayer = e => {
     e.preventDefault()
     if (players.includes(inputValue) || inputValue === '') return
     setPlayers([...players, inputValue])
-    localStorage.setItem('players', JSON.stringify([...players, inputValue]))
+    localStorage.setItem('KILLER_FIELD_GAME_KILLERS', JSON.stringify([...players, inputValue]))
     setInputValue('')
   }
 
   const deletePlayer = player => {
     setPlayers(players.filter(item => item !== player))
-    localStorage.setItem('players', JSON.stringify(players.filter(item => item !== player)))
+    localStorage.setItem('KILLER_FIELD_GAME_KILLERS', JSON.stringify(players.filter(item => item !== player)))
   }
 
   const getRandomElement = arr => arr[Math.floor(Math.random() * arr.length)]
@@ -39,7 +39,7 @@ const Home = () => {
       if (targets.length >= 2) { target = getRandomElement(targets.filter(item => item !== player)) }
       if (targets.length === 1) { target = targets[0] }
       targets = [...targets.filter(item => item !== target)]
-      
+
       return [
         ...accumulator,
         {
