@@ -62,7 +62,6 @@ const Home = () => {
 
   const checkResult = () => {
     const arr = getResult()
-    console.log(arr)
     const lastElement = arr[arr.length - 1]
     if (lastElement.killer !== lastElement.target) {
       setResult(arr)
