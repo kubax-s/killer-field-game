@@ -14,32 +14,20 @@ const H1 = styled.h1`
 const Home = () => {
 
   const [inputValue, setInputValue] = useState('')
-<<<<<<< HEAD
   const [players, setPlayers] = useState(localStorage.getItem('KILLER_FIELD_GAME_PLAYERS') ? JSON.parse(localStorage.getItem('KILLER_FIELD_GAME_PLAYERS')) : [])
-=======
-  const [players, setPlayers] = useState(localStorage.getItem('KILLER_FIELD_GAME_KILLERS') ? JSON.parse(localStorage.getItem('KILLER_FIELD_GAME_KILLERS')) : [])
->>>>>>> 7e0361db7ee6ff291c441e5fc1dd4f6ff67cc169
   const [result, setResult] = useState(false)
 
   const addPlayer = e => {
     e.preventDefault()
     if (players.includes(inputValue) || inputValue === '') return
     setPlayers([...players, inputValue])
-<<<<<<< HEAD
     localStorage.setItem('KILLER_FIELD_GAME_PLAYERS', JSON.stringify([...players, inputValue]))
-=======
-    localStorage.setItem('KILLER_FIELD_GAME_KILLERS', JSON.stringify([...players, inputValue]))
->>>>>>> 7e0361db7ee6ff291c441e5fc1dd4f6ff67cc169
     setInputValue('')
   }
 
   const deletePlayer = player => {
     setPlayers(players.filter(item => item !== player))
-<<<<<<< HEAD
     localStorage.setItem('KILLER_FIELD_GAME_PLAYERS', JSON.stringify(players.filter(item => item !== player)))
-=======
-    localStorage.setItem('KILLER_FIELD_GAME_KILLERS', JSON.stringify(players.filter(item => item !== player)))
->>>>>>> 7e0361db7ee6ff291c441e5fc1dd4f6ff67cc169
   }
 
   const getRandomElement = arr => arr[Math.floor(Math.random() * arr.length)]
