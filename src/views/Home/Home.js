@@ -37,7 +37,7 @@ const Home = () => {
     return players.reduce((accumulator, player) => {
       let target
       if (targets.length >= 2) { target = getRandomElement(targets.filter(item => item !== player)) }
-      if (targets.length === 1) { target = getRandomElement(targets) }
+      if (targets.length === 1) { target = targets[0] }
       targets = [...targets.filter(item => item !== target)]
       
       return [
@@ -48,6 +48,16 @@ const Home = () => {
         }
       ]
     }, [])
+  }
+
+  const checkResult = () => {
+    const arr = getResult()
+    const lastElement = arr[arr.length - 1]
+    if (lastElement.killer !== lastElement.target) {
+      setResult(arr)
+      return
+    }
+    checkResult()
   }
 
   return (
@@ -79,7 +89,7 @@ const Home = () => {
         players.length >= 3 && !result &&
         <Button 
           variant="contained"
-          onClick={ () => setResult(getResult) }
+          onClick={ checkResult }
         >
           Ready
         </Button>
