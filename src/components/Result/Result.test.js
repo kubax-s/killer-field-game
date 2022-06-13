@@ -33,10 +33,15 @@ const ResetResultButton =
 describe('Result component', () => {
 
     it('renders the correct DOM', () => {
-        const { getByText, getAllByTestId } = render(<Result result={ result } />)
+        const { getByText, getByTestId, getAllByTestId } = render(<Result result={ result } />)
     
         const listItem = getAllByTestId('result-listItem')
+        const buttonShowTarget = getAllByTestId('open-modal-button')
+        const buttonResetResult = getByTestId('reset-result-button')
+
         expect(listItem.length).toBe(result.length)
+        expect(buttonShowTarget.length).toBe(result.length)
+        expect(buttonResetResult).toBeInTheDocument()
 
         result.forEach(player => {
             const text = getByText(player.killer)

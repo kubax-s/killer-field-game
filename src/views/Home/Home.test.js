@@ -3,24 +3,28 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import Home from './Home'
 import Button from '@mui/material/Button'
 
+const mockedCheckResult = jest.fn()
+const ReadyButton = 
+  <Button 
+    variant="contained"
+    onClick={ mockedCheckResult }
+    data-testid="home-ready"
+  >
+    Ready
+  </Button>
+
 describe('Home component', () => {
 
   it('renders title', () => {
-    render(<Home />)
+    const { queryByText } = render(<Home />)
+    const button = queryByText('Ready')
+    
     expect(screen.getByText('Killer')).toBeInTheDocument()
+    expect(button).not.toBeInTheDocument()
   })
 
   test('Button "Ready" calls checkResult()', () => {
-    const mockedCheckResult = jest.fn()
-    const { getByTestId } = render(
-      <Button 
-        variant="contained"
-        onClick={ mockedCheckResult }
-        data-testid="home-ready"
-      >
-        Ready
-      </Button>
-    )
+    const { getByTestId } = render(ReadyButton)
     const button = getByTestId('home-ready')
 
     fireEvent.click(button)

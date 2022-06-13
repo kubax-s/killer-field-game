@@ -11,7 +11,9 @@ describe('PlayersList component', () => {
         const { getByText, getAllByTestId } = render(<PlayersList players={players} deletePlayer={mockedDeletePlayer} />)
     
         const listItem = getAllByTestId('players-listItem')
+        const button = getAllByTestId('players-button')
         expect(listItem.length).toBe(players.length)
+        expect(button.length).toBe(players.length)
 
         players.forEach(player => {
             const text = getByText(player)
