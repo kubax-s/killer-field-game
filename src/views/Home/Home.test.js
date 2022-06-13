@@ -15,11 +15,13 @@ const ReadyButton =
 
 describe('Home component', () => {
 
-  it('renders title', () => {
-    const { queryByText } = render(<Home />)
+  it('renders correct DOM', () => {
+    const { queryByText, getByTestId } = render(<Home />)
     const button = queryByText('Ready')
-    
+    const form = getByTestId('add-form')
+
     expect(screen.getByText('Killer')).toBeInTheDocument()
+    expect(form).toBeInTheDocument()
     expect(button).not.toBeInTheDocument()
   })
 
