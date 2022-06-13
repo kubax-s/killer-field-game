@@ -100,6 +100,7 @@ const Home = () => {
         <Button 
           variant="contained"
           onClick={ checkResult }
+          data-testid="home-ready"
         >
           Ready
         </Button>

@@ -39,9 +39,9 @@ const Result = ({ result, setResult }) => {
             <List sx={{ marginTop: '2rem', marginBottom: '3rem' }}>
                 { 
                     result.map(player => 
-                        <ListItem key={ player.killer }>
+                        <ListItem key={ player.killer } data-testid="result-listItem">
                             <ListItemButton>
-                                <Button variant="outlined" size="small" onClick={() => handleOpenModal(player.target)}>Show target</Button>
+                                <Button variant="outlined" size="small" data-testid="open-modal-button" onClick={() => handleOpenModal(player.target)}>Show target</Button>
                                 <ListItemText sx={{ marginLeft: '1rem' }} primary={ player.killer } />
                             </ListItemButton>
                         </ListItem>
@@ -50,19 +50,19 @@ const Result = ({ result, setResult }) => {
             </List>
 
             <Modal
-            open={openModal}
-            onClose={handleCloseModal}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
+                open={openModal}
+                onClose={handleCloseModal}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
             >
-            <Box sx={boxStyle}>
-                {
-                    modalText && 
-                    <Typography id="modal-modal-title" variant="h6" component="h2">Your target is { modalText }</Typography>
-                }
-            </Box>
+                <Box sx={boxStyle}>
+                    {
+                        modalText && 
+                        <Typography id="modal-modal-title" variant="h6" component="h2">Your target is { modalText }</Typography>
+                    }
+                </Box>
             </Modal>
-            <Button variant="contained" onClick={() => setResult(null)}>Reset result</Button>
+            <Button variant="contained" data-testid="reset-result-button" onClick={() => setResult(null)}>Reset result</Button>
         </>
     )
 }
