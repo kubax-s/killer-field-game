@@ -61,10 +61,14 @@ const Home = () => {
   }
 
   const checkResult = () => {
-    const arr = getResult()
-    const lastElement = arr[arr.length - 1]
-    if (lastElement.killer !== lastElement.target) {
-      setResult(arr)
+    const result = getResult() 
+    const arrays = result.map(el => Object.keys(el).map(key => el[key]))
+    const arraysSorted = arrays.map(el => el.sort())
+    const arraysWithoutDuplicates = Array.from(new Set(arraysSorted.map(JSON.stringify)), JSON.parse)
+
+    const lastElement = result[result.length - 1]
+    if (lastElement.killer !== lastElement.target && result.length === arraysWithoutDuplicates.length) {
+      setResult(result)
       return
     }
     checkResult()
