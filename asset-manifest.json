@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/killer-field-game/static/css/main.e6c13ad2.css",
-    "main.js": "/killer-field-game/static/js/main.457e33ab.js",
+    "main.js": "/killer-field-game/static/js/main.a60195c3.js",
     "index.html": "/killer-field-game/index.html",
     "main.e6c13ad2.css.map": "/killer-field-game/static/css/main.e6c13ad2.css.map",
-    "main.457e33ab.js.map": "/killer-field-game/static/js/main.457e33ab.js.map"
+    "main.a60195c3.js.map": "/killer-field-game/static/js/main.a60195c3.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.457e33ab.js"
+    "static/js/main.a60195c3.js"
   ]
 }
